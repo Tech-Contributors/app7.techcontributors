@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Get Code') {
-            steps {
-                git 'https://github.com/Tech-Contributors/app7.techcontributors.git'
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sh '''
