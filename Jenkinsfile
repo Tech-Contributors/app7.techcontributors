@@ -13,32 +13,34 @@ pipeline {
     }
 
     post {
-        success {
-            emailext(
-                subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
+    success {
+        emailext(
+            subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """
 Build SUCCESS 🎉
 
 Job: ${env.JOB_NAME}
-Build Number: ${env.BUILD_NUMBER}
+Build: ${env.BUILD_NUMBER}
 URL: ${env.BUILD_URL}
 """,
-                to: "adityasharma965064@gmail.com"
-            )
-        }
+            to: "adityasharma965064@gmail.com",
+            recipientProviders: []
+        )
+    }
 
-        failure {
-            emailext(
-                subject: "❌ FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
+    failure {
+        emailext(
+            subject: "❌ FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """
 Build FAILED ❌
 
 Job: ${env.JOB_NAME}
-Build Number: ${env.BUILD_NUMBER}
+Build: ${env.BUILD_NUMBER}
 URL: ${env.BUILD_URL}
 """,
-                to: "adityasharma965064@gmail.com"
-            )
-        }
+            to: "adityasharma965064@gmail.com",
+            recipientProviders: []
+        )
     }
+}
 }
